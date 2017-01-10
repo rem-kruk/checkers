@@ -10,12 +10,6 @@ for i = 1:9
     end
 end
 
-pcolor(board);
-colormap(gray(2));
-axis ij;
-axis square;
-hold on;
-
 for i = 1:9
     for j = 1:3
          if(board(i,j) == -1)
@@ -40,14 +34,5 @@ for i = 1:9
     end
 end
 
-for i = 1:9
-   for j = 1:9
-       if(board(i,j) == 2)
-           plot(i+0.5,j+0.5,'wo')
-       end
-       if(board(i,j) == 3)
-           plot(i+0.5,j+0.5,'ro')
-       end
-   end
-end
+
 

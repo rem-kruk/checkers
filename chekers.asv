@@ -6,7 +6,7 @@ turn = 2;
 
 %board(2,3) = -1;
 %board(3,4) = 2;
-while(isGameDone(board) == 1)
+while(isGameDone(board))
   redrawBoard;
   if(turn == 2)  
     while(turn == 2)
@@ -22,7 +22,11 @@ while(isGameDone(board) == 1)
         if(valid)
             board(ix,iy) = -1;
             board(fx,fy) = 2;
-
+            isGameDone;
+            if(gameDone)
+                
+            end
+            h = msgbox('Operation Completed');
             turn = 3;
         end
     end
@@ -46,10 +50,4 @@ while(isGameDone(board) == 1)
         end
       end
   end
-end
-
-if(isGameDone(board) == 2)
-    h = msgbox('White WINS!!!');
-elseif ( isGameDone(board) == 3)
-    h = msgbox('Red WINS!!!');
 end
