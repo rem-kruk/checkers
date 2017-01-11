@@ -3,13 +3,21 @@ prepareBoard;
 redrawBoard;
 
 turn = 2;
+afterBeating = 0;
 
-%board(2,3) = -1;
-%board(3,4) = 2;
 while(isGameDone(board) == 1)
-  redrawBoard;
+  possibleMoves = 1;
   if(turn == 2)  
     while(turn == 2)
+        if(afterBeating == 1)
+            areThereAnyPossibleMovesAfterBeating;
+            afterBeating = 2;
+        end
+        if(possibleMoves == 0)
+            afterBeating = 0;
+            turn = 3;
+            break;
+        end
         [x,y] = ginput(2);
         ix = floor(x(1));
         iy = floor(y(1)); %initial position
@@ -22,14 +30,23 @@ while(isGameDone(board) == 1)
         if(valid)
             board(ix,iy) = -1;
             board(fx,fy) = 2;
-
-            turn = 3;
+            redrawBoard;
         end
     end
     continue;
   end
+  possibleMoves = 1;
   if(turn == 3)
       while(turn == 3)
+       if(afterBeating == 1)
+            areThereAnyPossibleMovesAfterBeating;
+            afterBeating = 2;
+        end
+        if(possibleMoves == 0)
+            afterBeating = 0;
+            turn = 2;
+            break;
+        end
         [x,y] = ginput(2);
         ix = floor(x(1));
         iy = floor(y(1)); %initial position
@@ -40,9 +57,9 @@ while(isGameDone(board) == 1)
         fy = floor(y(2));
         isValid;
         if(valid)
-        board(ix,iy) = -1;
-        board(fx,fy) = 3;
-        turn = 2;
+            board(ix,iy) = -1;
+            board(fx,fy) = 3;
+            redrawBoard;
         end
       end
   end
