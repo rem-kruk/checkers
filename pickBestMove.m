@@ -16,8 +16,12 @@ rightMoveY = [];
         rightMoveY = [rightMoveY(1),rightMoveY(2)];
     end
     if(length(rightMoveX) == 0)
-        rightMoveX = [coordinateX(1),coordinateX(2)];
-        rightMoveY = [coordinateY(1),coordinateY(2)];
+        index = randi(length(coordinateX));
+        while(mod(index,3) == 0 || index == length(coordinateX))
+            index = randi(length(coordinateX));
+        end
+        rightMoveX = [coordinateX(index),coordinateX(index+1)];
+        rightMoveY = [coordinateY(index),coordinateY(index+1)];
     end
 end
 
