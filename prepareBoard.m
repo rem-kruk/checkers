@@ -1,4 +1,4 @@
-board = zeros(8,8);
+board = zeros(10,10);
 
 for i = 1:9
     for j= 1:9

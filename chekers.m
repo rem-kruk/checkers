@@ -4,6 +4,7 @@ redrawBoard;
 
 turn = 2;
 afterBeating = 0;
+MAX_DEPTH = 3;
 
 while(isGameDone(board) == 1)
   possibleMoves = 1;
@@ -47,7 +48,7 @@ while(isGameDone(board) == 1)
             turn = 2;
             break;
         end
-        [x,y] = ginput(2);
+        [x,y] = decideWhichMoveToMake(board,turn);
         ix = floor(x(1));
         iy = floor(y(1)); %initial position
         if (board(ix,iy) ~= 3)
