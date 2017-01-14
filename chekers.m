@@ -48,7 +48,21 @@ while(isGameDone(board) == 1)
             turn = 2;
             break;
         end
-        [x,y] = decideWhichMoveToMake(board,turn);
+        [coordinateX, coordinateY] = getPossibleMoves(board, turn);
+        movesWithOverallValues = [];
+        for i = 1:3:length(coordinateX)
+            ix = coordinateX(i);
+            iy = coordinateY(i);
+            fx = coordinateX(i+1);
+            fy = coordinateY(i+1);
+            value =  decideWhichMoveToMake(board,turn,ix ,fx ,iy ,fy , coordinateX(i+2),2)
+            movesWithOverallValues(end+1) = ix;
+            movesWithOverallValues(end+1) = fx;
+            movesWithOverallValues(end+1) = iy;
+            movesWithOverallValues(end+1) = fy;
+            movesWithOverallValues(end+1) = value;
+        end
+        [x,y] = pickMoveWithHighestValue(movesWithOverallValues);
         ix = floor(x(1));
         iy = floor(y(1)); %initial position
         if (board(ix,iy) ~= 3)
