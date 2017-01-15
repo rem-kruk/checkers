@@ -74,6 +74,7 @@ while(isGameDone(board) == 1)
         if(valid)
             board(ix,iy) = -1;
             board(fx,fy) = 3;
+            pause(0.5);
             redrawBoard;
         end
       end
